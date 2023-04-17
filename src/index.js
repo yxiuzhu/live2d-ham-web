@@ -43,7 +43,7 @@ function loadWidget(config) {
                 }
             }
         }
-        const text = `欢迎阅读<span>「${document.title.split(" - ")[0]}」</span>`;
+        const text = `都给我看这里<span>「${document.title.split(" - ")[0]}」</span>`;
         let from;
         if (document.referrer !== "") {
             const referrer = new URL(document.referrer),
@@ -135,6 +135,7 @@ function loadWidget(config) {
             modelTexturesId = 53; // 材质 ID
         }
         model.loadModel(modelId, modelTexturesId);
+        console.log(config, 'config在 initModel 中是啥')
         fetch(config.waifuPath)
             .then(response => response.json())
             .then(registerEventListener);
@@ -142,6 +143,7 @@ function loadWidget(config) {
 }
 
 function initWidget(config, apiPath) {
+  console.log(config, 'config是啥')
     if (typeof config === "string") {
         config = {
             waifuPath: config,
